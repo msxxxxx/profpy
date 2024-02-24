@@ -17,8 +17,8 @@ class Category(models.Model):
             null=False,
             blank=False,
             unique=True,
-            help_text="Name category",
-            verbose_name="name", #lowcase prefer
+            help_text="Название категории",
+            verbose_name="название",
             validators=[
                 validators.MinLengthValidator(limit_value=2)
             ]
@@ -28,8 +28,8 @@ class Category(models.Model):
             null=False,
             blank=False,
             unique=True,
-            help_text="Link",
-            verbose_name="link",
+            help_text="Ссылка",
+            verbose_name="Ссылка",
             validators=[
                 validators.MinLengthValidator(limit_value=2)
             ]
