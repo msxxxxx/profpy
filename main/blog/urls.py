@@ -17,5 +17,6 @@ from .views import category_list
 urlpatterns = [
     path("api/v1/categories/", category_list),
     path("api/v1/posts/", topic_list),
-    path("categories/", CategoryListView.as_view())
+    path("categories/", CategoryListView.as_view()),
+    path("categories/<slug:slug>/", CategoryDetailView.as_view())
 ]

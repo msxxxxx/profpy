@@ -4,6 +4,7 @@ from .models import Topic
 from django.http import HttpRequest, JsonResponse
 from django.views.decorators.http import require_GET
 from django.views.generic import *
+# from django.shortcuts import *
 from .forms import FeedbackForm, CategoryForm
 
 @require_GET
@@ -37,11 +38,22 @@ class CategoryListView(ListView):
         return context
 
     def post(self, request: HttpRequest):
-        form = CategoryForm(data=request.POST)
+        # form = CategoryForm(data=request.POST)
+        form = FeedbackForm(data=request.POST)
         if form.is_valid():
-            ...
+            # form.save()
+            print(form.data)
         return self.get(request=request)
 
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = "blog/category_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
 
 @require_GET
 def topic_list(request: HttpRequest):
