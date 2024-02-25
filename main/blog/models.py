@@ -1,8 +1,10 @@
-from django.db import models
-from django.core import validators
-from django.utils.timezone import now
-from typing import TYPE_CHECKING
 from datetime import datetime
+from typing import TYPE_CHECKING
+
+from django.core import validators
+from django.db import models
+from django.urls import reverse
+from django.utils.timezone import now
 
 # Create your models here.
 
@@ -114,3 +116,6 @@ class Topic(models.Model):
         # indexes = [
         #     models.Index(fields=["category"])
         # ]
+
+    def get_absolute_url(self) -> str:
+        return reverse(viewname="topic_detail", kwargs={"slug": self.slug})
